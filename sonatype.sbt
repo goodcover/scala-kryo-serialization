@@ -1,1 +1,1 @@
-sonatypeProfileName := "io.altoo"
+sonatypeProfileName := "com.goodcover"
