@@ -1,6 +1,6 @@
 package io.altoo.serialization.kryo.scala.serializer
 
-import com.esotericsoftware.kryo.util.{DefaultClassResolver, ListReferenceResolver}
+import com.esotericsoftware.kryo.kryo5.util.{DefaultClassResolver, ListReferenceResolver}
 import io.altoo.serialization.kryo.scala.ScalaVersionSerializers
 import io.altoo.serialization.kryo.scala.serializer.{ScalaEnumNameSerializer, ScalaKryo}
 import io.altoo.serialization.kryo.scala.testkit.{AbstractKryoTest, KryoSerializationTesting}
@@ -19,13 +19,12 @@ object ScalaEnumSerializationTest {
   }
 }
 
-class ScalaEnumSerializationTest  extends AnyFlatSpec with Matchers with KryoSerializationTesting {
+class ScalaEnumSerializationTest extends AnyFlatSpec with Matchers with KryoSerializationTesting {
   import ScalaEnumSerializationTest.*
 
   val kryo = new ScalaKryo(new DefaultClassResolver(), new ListReferenceResolver())
   kryo.setRegistrationRequired(false)
   kryo.addDefaultSerializer(classOf[scala.runtime.EnumValue], new ScalaEnumNameSerializer[scala.runtime.EnumValue])
-
 
   behavior of "Kryo serialization"
 
